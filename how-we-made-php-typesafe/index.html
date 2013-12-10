@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/reset.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="shortcut icon" href="css/favicon.png" />
+    <link rel="apple-touch-icon" href="css/apple-touch-icon.png" />
+    <!-- Code Prettifier: -->
+<link href="css/highlight.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+    <link href="css/style.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,800italic,300,400,800' rel='stylesheet' type='text/css'>    
+
+
+  </head>
+
+  <body>
+  <div class="fallback-message">
+  <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+  <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+  </div>
+    <div id="impress">
+    <div class='step' >
+    
+<h1>How We Made PHP Typesafe</h1>
+
+<p>(sort of)</p>
+</div>
+      <div class='step' >
+    
+<p>We all know that PHP is dynamically typed</p>
+<pre><code class='prettyprint php'>$foo = 1;
+</code></pre></div>
+      <div class='step' >
+    
+<p>We know it&#39;s hard to guess types dynamically</p>
+<pre><code class='prettyprint php'>$foo = $_GET['foo_id'];
+</code></pre></div>
+      <div class='step' >
+    
+<p>But we&#39;re suckers for punishment</p>
+</div>
+      <div class='step' >
+    
+<h2>A C extension that wraps function calls...</h2>
+<pre><code class='prettyprint php'>/**
+* @return int
+*/
+function getFoo()
+{
+    return "foo";
+}
+
+</code></pre></div>
+      <div class='step' >
+    
+<h2>... and enforces PHPDoc at runtime</h2>
+<pre><code class='prettyprint php'>/**
+* @return int
+*/
+function getFoo()
+{
+    return "foo";
+}
+
+
+// PHP Fatal error:  Wrong type encountered
+// for return value of function getFoo
+// was expecting a integer but
+// got a (string) 'foo'
+
+</code></pre></div>
+      <div class='step' >
+    
+<h2>... and every function must have valid PHPDoc</h2>
+<pre><code class='prettyprint php'>function getFoo()
+{
+    return "foo";
+}
+
+
+// PHP Fatal error:  Function annotation compil-
+// ation failed for function getFoo in file
+// foo.php at line 3, error message: No
+// phpdoc specified
+</code></pre></div>
+      <div class='step' >
+    
+<p>PHPDoc this uniform makes static analysis easy too.</p>
+</div>
+      <div class='step' >
+    <pre><code class='prettyprint php'>
+/** @return Foo|null */
+function getFoo()
+{
+    return null;
+}
+
+$fooInstance = getFoo();
+$fooInstance->doIt();
+
+</code></pre></div>
+      <div class='step' >
+    
+<p>We&#39;re going to open source this work soon. Thanks!</p>
+
+      </div>
+    <script src="js/impress.js"></script>
+    <script>impress().init();</script>
+  </body>
+</html>
+    
