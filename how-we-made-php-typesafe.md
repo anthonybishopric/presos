@@ -102,3 +102,7 @@ $fooInstance->doIt();
 ---
 
 We're going to open source this work soon. Thanks!
+
+@sentiental - Anthony
+
+@jmarrama - Joe
