@@ -93,6 +93,8 @@ function getFoo()
 $fooInstance = getFoo();
 $fooInstance->doIt();
 
+// Warning: $fooInstance may be null at line 8
+
 ```
 
 ---
