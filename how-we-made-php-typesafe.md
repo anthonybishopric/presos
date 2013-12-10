@@ -87,7 +87,9 @@ PHPDoc this uniform makes static analysis easy too.
 /** @return Foo|null */
 function getFoo()
 {
-	return null;
+	if (rand() < 0.5)
+		return null;
+	return new Foo();
 }
 
 $fooInstance = getFoo();
