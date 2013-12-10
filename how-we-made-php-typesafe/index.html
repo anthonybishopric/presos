@@ -97,7 +97,7 @@ function getFoo()
 /** @return Foo|null */
 function getFoo()
 {
-    if (rand() < 0.5)
+    if (rand() &lt; 0.5)
         return null;
     return new Foo();
 }
@@ -108,6 +108,28 @@ $fooInstance->doIt();
 // Warning: $fooInstance may be null at line 8
 
 </code></pre></div>
+      <div class='step' >
+    
+<h2>The Typesystem</h2>
+
+<ul>
+<li>Distinguishes <code class='inline prettyprint'>int</code>, <code class='inline prettyprint'>float</code>, <code class='inline prettyprint'>bool</code> and <code class='inline prettyprint'>numeric</code></li>
+<li><code class='inline prettyprint'>null</code> is its own type</li>
+<li>Distinguishes <code class='inline prettyprint'>null</code> from <code class='inline prettyprint'>void</code></li>
+<li>Disjunctions are possible with <code class='inline prettyprint'>|</code></li>
+<li><code class='inline prettyprint'>@return</code> must always be set</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Why did you do this??</h2>
+
+<ul>
+<li>Static analysis is important in big eng groups.</li>
+<li>It&#39;s hard to write tests for everything.</li>
+<li>Keeps our documentation up to date for free.</li>
+</ul>
+</div>
       <div class='step' >
     
 <p>We&#39;re going to open source this work soon. Thanks!</p>

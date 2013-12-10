@@ -87,7 +87,7 @@ PHPDoc this uniform makes static analysis easy too.
 /** @return Foo|null */
 function getFoo()
 {
-	if (rand() < 0.5)
+	if (rand() &lt; 0.5)
 		return null;
 	return new Foo();
 }
@@ -98,6 +98,24 @@ $fooInstance->doIt();
 // Warning: $fooInstance may be null at line 8
 
 ```
+
+---
+
+## The Typesystem
+
+* Distinguishes `int`, `float`, `bool` and `numeric`
+* `null` is its own type
+* Distinguishes `null` from `void`
+* Disjunctions are possible with `|`
+* `@return` must always be set
+
+---
+
+## Why did you do this??
+
+* Static analysis is important in big eng groups.
+* It's hard to write tests for everything.
+* Keeps our documentation up to date for free.
 
 ---
 
